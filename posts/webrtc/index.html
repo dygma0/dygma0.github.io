@@ -1,16 +1,15 @@
 <!DOCTYPE html>
 <html><head lang="en">
 	<meta charset="utf-8" />
-	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>Webrtc - Segmentation fault</title><meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="WebRTC
-WebRTC(Web Real-Time Communication)는 브라우저와 모바일 애플리케이션 간 실시간 음성, 영상, 그리고 데이터 통신을 가능하게 하는 핵심 웹 기술이다. WebRTC는 플러그인 없이 고품질의 실시간 통신을 제공하며, 화상 회의, P2P 파일 공유, 실시간 채팅 등 다양한 응용에서 중요한 역할을 한다. 특히 온라인 게임 음성 채팅이나 라이브 방송과 같은 실시간 소통 시나리오에서 WebRTC는 필수적이다. 본 글에서는 WebRTC의 통신 과정을 네트워크 패킷 레벨에서 상세히 분석하고, 각 단계에서 발생하는 주요 기술적 요소들을 탐구하겠다.
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>WebRTC - Segmentation fault</title><meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="WebRTC(Web Real-Time Communication)는 브라우저와 모바일 애플리케이션 간 실시간 음성, 영상, 그리고 데이터 통신을 가능하게 하는 핵심 웹 기술이다. WebRTC는 플러그인 없이 고품질의 실시간 통신을 제공하며, 화상 회의, P2P 파일 공유, 실시간 채팅 등 다양한 응용에서 중요한 역할을 한다. 특히 온라인 게임 음성 채팅이나 라이브 방송과 같은 실시간 소통 시나리오에서 WebRTC는 필수적이다. 본 글에서는 WebRTC의 통신 과정을 네트워크 패킷 레벨에서 상세히 분석하고, 각 단계에서 발생하는 주요 기술적 요소들을 탐구하겠다.
 1. 신호 교환 (Signaling)
 WebRTC에서 두 피어 간 실시간 연결을 설정하는 첫 번째 단계는 신호 교환이다. 신호 교환은 두 피어 간에 연결 정보를 교환하는 과정을 의미하며, WebRTC 자체의 내장 기능이 아닌 사용자가 직접 구현해야 하는 메커니즘이다. 신호 교환은 보통 WebSocket 또는 HTTP 프로토콜을 사용하여 수행되며, 이를 통해 두 피어가 서로 연결 준비가 되었는지 확인한다." />
 	<meta property="og:image" content=""/>
 	<meta property="og:url" content="https://dygma0.github.io/posts/webrtc/">
   <meta property="og:site_name" content="Segmentation fault">
-  <meta property="og:title" content="Webrtc">
-  <meta property="og:description" content="WebRTC WebRTC(Web Real-Time Communication)는 브라우저와 모바일 애플리케이션 간 실시간 음성, 영상, 그리고 데이터 통신을 가능하게 하는 핵심 웹 기술이다. WebRTC는 플러그인 없이 고품질의 실시간 통신을 제공하며, 화상 회의, P2P 파일 공유, 실시간 채팅 등 다양한 응용에서 중요한 역할을 한다. 특히 온라인 게임 음성 채팅이나 라이브 방송과 같은 실시간 소통 시나리오에서 WebRTC는 필수적이다. 본 글에서는 WebRTC의 통신 과정을 네트워크 패킷 레벨에서 상세히 분석하고, 각 단계에서 발생하는 주요 기술적 요소들을 탐구하겠다.
+  <meta property="og:title" content="WebRTC">
+  <meta property="og:description" content="WebRTC(Web Real-Time Communication)는 브라우저와 모바일 애플리케이션 간 실시간 음성, 영상, 그리고 데이터 통신을 가능하게 하는 핵심 웹 기술이다. WebRTC는 플러그인 없이 고품질의 실시간 통신을 제공하며, 화상 회의, P2P 파일 공유, 실시간 채팅 등 다양한 응용에서 중요한 역할을 한다. 특히 온라인 게임 음성 채팅이나 라이브 방송과 같은 실시간 소통 시나리오에서 WebRTC는 필수적이다. 본 글에서는 WebRTC의 통신 과정을 네트워크 패킷 레벨에서 상세히 분석하고, 각 단계에서 발생하는 주요 기술적 요소들을 탐구하겠다.
 1. 신호 교환 (Signaling) WebRTC에서 두 피어 간 실시간 연결을 설정하는 첫 번째 단계는 신호 교환이다. 신호 교환은 두 피어 간에 연결 정보를 교환하는 과정을 의미하며, WebRTC 자체의 내장 기능이 아닌 사용자가 직접 구현해야 하는 메커니즘이다. 신호 교환은 보통 WebSocket 또는 HTTP 프로토콜을 사용하여 수행되며, 이를 통해 두 피어가 서로 연결 준비가 되었는지 확인한다.">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
@@ -19,8 +18,8 @@ WebRTC에서 두 피어 간 실시간 연결을 설정하는 첫 번째 단계�
     <meta property="article:modified_time" content="2024-10-06T16:15:52+09:00">
 
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Webrtc">
-  <meta name="twitter:description" content="WebRTC WebRTC(Web Real-Time Communication)는 브라우저와 모바일 애플리케이션 간 실시간 음성, 영상, 그리고 데이터 통신을 가능하게 하는 핵심 웹 기술이다. WebRTC는 플러그인 없이 고품질의 실시간 통신을 제공하며, 화상 회의, P2P 파일 공유, 실시간 채팅 등 다양한 응용에서 중요한 역할을 한다. 특히 온라인 게임 음성 채팅이나 라이브 방송과 같은 실시간 소통 시나리오에서 WebRTC는 필수적이다. 본 글에서는 WebRTC의 통신 과정을 네트워크 패킷 레벨에서 상세히 분석하고, 각 단계에서 발생하는 주요 기술적 요소들을 탐구하겠다.
+  <meta name="twitter:title" content="WebRTC">
+  <meta name="twitter:description" content="WebRTC(Web Real-Time Communication)는 브라우저와 모바일 애플리케이션 간 실시간 음성, 영상, 그리고 데이터 통신을 가능하게 하는 핵심 웹 기술이다. WebRTC는 플러그인 없이 고품질의 실시간 통신을 제공하며, 화상 회의, P2P 파일 공유, 실시간 채팅 등 다양한 응용에서 중요한 역할을 한다. 특히 온라인 게임 음성 채팅이나 라이브 방송과 같은 실시간 소통 시나리오에서 WebRTC는 필수적이다. 본 글에서는 WebRTC의 통신 과정을 네트워크 패킷 레벨에서 상세히 분석하고, 각 단계에서 발생하는 주요 기술적 요소들을 탐구하겠다.
 1. 신호 교환 (Signaling) WebRTC에서 두 피어 간 실시간 연결을 설정하는 첫 번째 단계는 신호 교환이다. 신호 교환은 두 피어 간에 연결 정보를 교환하는 과정을 의미하며, WebRTC 자체의 내장 기능이 아닌 사용자가 직접 구현해야 하는 메커니즘이다. 신호 교환은 보통 WebSocket 또는 HTTP 프로토콜을 사용하여 수행되며, 이를 통해 두 피어가 서로 연결 준비가 되었는지 확인한다.">
 
 	
@@ -52,7 +51,7 @@ WebRTC에서 두 피어 간 실시간 연결을 설정하는 첫 번째 단계�
 <main>
 	<article>
 		<div class="title">
-			<h1 class="title">Webrtc</h1>
+			<h1 class="title">WebRTC</h1>
 			<div class="meta">Posted on Oct 6, 2024</div>
 		</div>
 		
@@ -60,8 +59,7 @@ WebRTC에서 두 피어 간 실시간 연결을 설정하는 첫 번째 단계�
 		
 
 		<section class="body">
-			<h1 id="webrtc">WebRTC</h1>
-<p>WebRTC(Web Real-Time Communication)는 브라우저와 모바일 애플리케이션 간 실시간 음성, 영상, 그리고 데이터 통신을 가능하게 하는 핵심 웹 기술이다. WebRTC는 플러그인 없이 고품질의 실시간 통신을 제공하며, 화상 회의, P2P 파일 공유, 실시간 채팅 등 다양한 응용에서 중요한 역할을 한다. 특히 온라인 게임 음성 채팅이나 라이브 방송과 같은 실시간 소통 시나리오에서 WebRTC는 필수적이다. 본 글에서는 WebRTC의 통신 과정을 네트워크 패킷 레벨에서 상세히 분석하고, 각 단계에서 발생하는 주요 기술적 요소들을 탐구하겠다.</p>
+			<p>WebRTC(Web Real-Time Communication)는 브라우저와 모바일 애플리케이션 간 실시간 음성, 영상, 그리고 데이터 통신을 가능하게 하는 핵심 웹 기술이다. WebRTC는 플러그인 없이 고품질의 실시간 통신을 제공하며, 화상 회의, P2P 파일 공유, 실시간 채팅 등 다양한 응용에서 중요한 역할을 한다. 특히 온라인 게임 음성 채팅이나 라이브 방송과 같은 실시간 소통 시나리오에서 WebRTC는 필수적이다. 본 글에서는 WebRTC의 통신 과정을 네트워크 패킷 레벨에서 상세히 분석하고, 각 단계에서 발생하는 주요 기술적 요소들을 탐구하겠다.</p>
 <h2 id="1-신호-교환-signaling">1. 신호 교환 (Signaling)</h2>
 <p>WebRTC에서 두 피어 간 실시간 연결을 설정하는 첫 번째 단계는 신호 교환이다. 신호 교환은 두 피어 간에 연결 정보를 교환하는 과정을 의미하며, WebRTC 자체의 내장 기능이 아닌 사용자가 직접 구현해야 하는 메커니즘이다. 신호 교환은 보통 WebSocket 또는 HTTP 프로토콜을 사용하여 수행되며, 이를 통해 두 피어가 서로 연결 준비가 되었는지 확인한다.</p>
 <p>이 신호 교환 과정에서는 <strong>SDP(Session Description Protocol)</strong>, <strong>ICE 후보지(Candidate)</strong>, 그리고 <strong>네트워크 설정 정보</strong>가 교환된다. SDP는 미디어 스트림의 형식, 코덱, 대역폭 등을 정의하고, ICE 후보지는 연결 가능한 네트워크 경로를 제공한다.</p>
